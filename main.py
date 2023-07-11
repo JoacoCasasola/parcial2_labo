@@ -371,13 +371,13 @@ while run:
                 lista_rect_enemigos = []
                 lista_rect_disparos = []
                 lista_rect_disparos_jugador = []
-                inmunidad = False
                 poder = Poderes("recursos\\poderes\\elixir1.png")
                 plataforma = Plataforma(ANCHO_VENTANA-350,ALTO_VENTANA-50,130,"recursos\\plataforma\\plataforma3.png")
                 grupo_plataformas.add(plataforma)
                 enemigo_final = EnemigoFinal(ANCHO_VENTANA/2-45, 0)
                 
             elif reanudar:
+                inmunidad = False
                 pausa = False
 
 
