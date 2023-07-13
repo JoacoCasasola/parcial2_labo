@@ -12,4 +12,5 @@ class Plataforma(pygame.sprite.Sprite):
         self.rect.y = y
 
     def update(self,scroll):
-        self.rect.y += scroll
+        if scroll > 0:
+            self.rect.y += scroll

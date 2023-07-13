@@ -3,14 +3,21 @@ from animaciones import*
 from constantes import*
 
 class Enemigos(pygame.sprite.Sprite):
-    def __init__(self,x,y) -> None:
+    def __init__(self,x,y,demonio_rojo = False) -> None:
         pygame.sprite.Sprite.__init__(self)
         self.demonio1_vuela_izquierda = demonio1_vuela_izquierda
         self.demonio1_ataque_izquierda = demonio1_ataque_izquierda
 
-        self.frame = 0
+        self.demonio2_vuela_izquierda = demonio2_vuela_izquierda
+        self.demonio2_ataque_izquierda = demonio2_ataque_izquierda
 
-        self.animacion = self.demonio1_vuela_izquierda
+        self.frame = 0
+        self.demonio_rojo = demonio_rojo
+        
+        if self.demonio_rojo:
+            self.animacion = self.demonio2_vuela_izquierda
+        else:
+            self.animacion = self.demonio1_vuela_izquierda
 
         self.image = self.animacion[self.frame]
         self.image = pygame.transform.scale(self.image,(100,100))
@@ -19,8 +26,11 @@ class Enemigos(pygame.sprite.Sprite):
 
         self.direccion = -1
         self.flip = False
-        self.demonio_rojo = False
-        self.hp = 30
+        
+        if self.demonio_rojo:
+            self.hp = 50
+        else:
+            self.hp = 30
         
         self.rect.x = x
         self.rect.y = y
@@ -53,9 +63,16 @@ class Enemigos(pygame.sprite.Sprite):
 
     def enemigo_animacion(self,esta_disparando):
         if esta_disparando == True:
-            self.animacion = self.demonio1_ataque_izquierda
+            if self.demonio_rojo:
+                self.animacion = self.demonio2_ataque_izquierda
+            else:
+                self.animacion = self.demonio1_ataque_izquierda
+
         if self.frame >= len(self.animacion)-1:
-            self.animacion = self.demonio1_vuela_izquierda
+            if self.demonio_rojo:
+                self.animacion = self.demonio2_vuela_izquierda
+            else:
+                self.animacion = self.demonio1_vuela_izquierda
 
         if (self.frame < len(self.animacion)-1):
             self.frame += 1

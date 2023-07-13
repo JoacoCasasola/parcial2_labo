@@ -15,7 +15,6 @@ def reescalar_imagen(lista_animaciones,W,H):
             lista[i] = pygame.transform.scale(imagen, (W, H))
 
 
-demonio_rojo = False
 
 #Player
 personaje_quieto_derecha = []
@@ -47,21 +46,25 @@ personaje_muere_derecha = gira_imagenes(personaje_muere_izquierda,True,False)
 
 #Enemigo - demonio1
 demonio1_vuela_izquierda = []
-for i in range(1,10):
-    if demonio_rojo:
-        demonio1_vuela_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio2.png\\vuela\\vuela{i}.png"))
-    else:    
+for i in range(1,10):   
         demonio1_vuela_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio1.png\\vuela\\vuela{i}.png"))
 demonio1_vuela_derecha = gira_imagenes(demonio1_vuela_izquierda,True,False)
 
 demonio1_ataque_izquierda = []
 for i in range(1,16):
-    if demonio_rojo:
-        demonio1_ataque_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio2.png\\ataque\\ataque{i}.png"))
-    else:    
         demonio1_ataque_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio1.png\\ataque\\ataque{i}.png"))
 demonio1_ataque_derecha = gira_imagenes(demonio1_ataque_izquierda,True,False)
 
+
+demonio2_vuela_izquierda = []
+for i in range(1,10):   
+        demonio2_vuela_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio2.png\\vuela\\vuela{i}.png"))
+demonio2_vuela_izquierda = gira_imagenes(demonio2_vuela_izquierda,True,False)
+
+demonio2_ataque_izquierda = []
+for i in range(1,16):
+        demonio2_vuela_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio2.png\\ataque\\ataque{i}.png"))
+demonio2_vuela_derecha = gira_imagenes(demonio2_vuela_izquierda,True,False)
 
 
 
@@ -76,6 +79,10 @@ for i in range(1,10):
     enemigo_final_ataque_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio_Final.png\\ataque\\ataque{i}.png"))
 enemigo_final_ataque_derecha = gira_imagenes(enemigo_final_ataque_izquierda,True,False)
 
+enemigo_final_muere_izquierda = []
+for i in range(1,13):
+    enemigo_final_muere_izquierda.append(pygame.image.load(f"recursos\\enemigos\\demonio_Final.png\\muere\\muere{i}.png"))
+enemigo_final_muere_derecha= gira_imagenes(enemigo_final_muere_izquierda,True,False)
 
 
 #Balas - Demonios

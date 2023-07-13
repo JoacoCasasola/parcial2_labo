@@ -1,5 +1,4 @@
 import pygame
-from funciones_imagen import draw_texto
 
 class Menu:
     def __init__(self,x,y,superficie) -> None:
@@ -10,12 +9,13 @@ class Menu:
         self.click = False
 
         
-    def draw(self, pantalla):
+    def draw(self, pantalla, sonido_click):
         pos_mouse = pygame.mouse.get_pos()
 
         if self.rect.collidepoint(pos_mouse):
             if pygame.mouse.get_pressed()[0] == 1:
                 self.click = True
+                sonido_click.play()
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.click = False

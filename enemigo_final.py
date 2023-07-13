@@ -1,16 +1,20 @@
 import pygame
 from animaciones import*
 from constantes import*
+from disparos import*
 
 class EnemigoFinal(pygame.sprite.Sprite):
     def __init__(self,x,y) -> None:
         pygame.sprite.Sprite.__init__(self)
         self.demonioF_quieto_izquierda = enemigo_final_quieto_izquierda
         self.demonioF_ataque_izquierda = enemigo_final_ataque_izquierda
+        self.demonioF_muere_izquierda = enemigo_final_muere_izquierda
 
         self.frame = 0
         self.contador_direccion = 0
         self.contador_ataque = 0
+        self.esta_disparando = False
+        self.esta_muerto = False
 
         self.animacion = self.demonioF_quieto_izquierda
 
@@ -27,6 +31,8 @@ class EnemigoFinal(pygame.sprite.Sprite):
         self.rect_coli.x = self.rect.centerx - 20
         self.rect_coli.y = self.rect.centery - 40
 
+   
+        
 
     def update(self,scroll):
         self.rect.y += scroll
@@ -40,20 +46,29 @@ class EnemigoFinal(pygame.sprite.Sprite):
 
         if self.contador_direccion >= 200:
             self.contador_direccion = 0
-
+        
+        if self.contador_ataque >= 100 and self.contador_ataque <= 110:
+            self.esta_disparando = True
 
     def anima_enemigo_final(self):
         self.contador_ataque += 1
         if self.frame >= len(self.animacion)-1:
             self.animacion = self.demonioF_quieto_izquierda
 
-        if self.contador_ataque >= 250:
+        if self.contador_ataque >= 100:
             self.animacion = self.demonioF_ataque_izquierda
+            
+            
         elif self.contador_ataque < 250:
             self.animacion = self.demonioF_quieto_izquierda
 
-        if self.contador_ataque >= 300:
+        if self.contador_ataque >= 200:
             self.contador_ataque = 0
+
+        if self.hp <= 0:
+            self.animacion = self.demonioF_muere_izquierda
+            self.esta_muerto = True
+            
 
         if (self.frame < len(self.animacion)-1):
             self.frame += 1
