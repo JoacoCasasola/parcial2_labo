@@ -485,7 +485,6 @@ while run:
         
         
         if pausa:
-            inmunidad = True
             pantalla.blit(fondo2,(0,0)) 
             pantalla.blit(menu_de_pausa,(50,200))
 
